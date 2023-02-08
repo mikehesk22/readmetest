@@ -55,6 +55,9 @@
 			* Before/After each Feature
 			* Before/After each Scenario
 			* Before/After each Step
+		* Features - Feature files are where the scenarios are created using Gherkin language
+		* Step Definition - Step definitions contains the code for each step inside the corresponding feature file.
+
 		* Framework split into applicant, reviewer, API & Set up tests(advanced reporting) tests
 			* Set up tests (Smoke Tests)
 				* The set up tests are primarily used as Smoke Tests once the environment has been refreshed, these tests also create any features that may require other tests to run . E.g. Users will be created to use as part of login tests.
@@ -81,14 +84,9 @@
 				* Roles Scenarios
 				* Statuses
 				* Documents (Upload & Delete)
-				* User Creation
-				* Features - Feature files are where the scenarios are created using Gherkin language
-				***(Reviewer folders screenshots)
+				* User Creation						
+			* API Folders - These folders contain test scenarios relating to the Advanced Reporting tree structure, include testing creation of reports using the different Themes; Meeting, User, Submissions, Project, Submission Contact.						
 				
-			* API Folders - These folders contain test scenarios relating to the Advanced Reporting tree structure, include testing creation of reports using the different Themes; Meeting, User, Submissions, Project, Submission Contact.
-				*** (API Folders screenshots)
-				
-		* Step Definition - Step definitions contains the code for each step inside the corresponding feature file.		
 		* Utilities Folders - These include helper methods such as:
 			* Api Helpers - Inside this folder are the helper methods for API scenarios.				
 			* Component Helpers - Inside this folder will be helper methods for the following:
@@ -100,6 +98,7 @@
 				* File Readers
 				***(Screenshots)
 			* Table Classes
+			
 		* Allure Config - This file contains configuration for allure reporting 
 		* App.config file has the following settings where the value can be edited:
 			* Browser - There are multiple options that can be chosen for the browser, depending on what browser you would like tests to be run. Options are as follows:
@@ -114,36 +113,36 @@
 			* ApplicantUrl - Set value to the URL of the Applicant site
 			* ReviewerUrl - Set Value to the URL of the Reviewer Site
       
-			###Example
-			```xml
+		### Example
+		```xml
 			
-			<appSettings>
-				<add key="Browser" value="Chrome" />
-				<add key="RemoteCapabilities" value="" />
-				<add key="Username" value="conor.thomson@edgetesting.co.uk" />
-				<add key="Password" value="Infonetica@123" />
-				<add key="PageLoadTimeout" value="30" />
-				<add key="ApplicantUrl" value="https://edge-live.forms.ethicalreviewmanager.com" />
-				<add key="ReviewerUrl" value="https://edge-live.review.ethicalreviewmanager.com" />
-			</appSettings>
+		<appSettings>
+			<add key="Browser" value="Chrome" />
+			<add key="RemoteCapabilities" value="" />
+			<add key="Username" value="conor.thomson@edgetesting.co.uk" />
+			<add key="Password" value="Infonetica@123" />
+			<add key="PageLoadTimeout" value="30" />
+			<add key="ApplicantUrl" value="https://edge-live.forms.ethicalreviewmanager.com" />
+			<add key="ReviewerUrl" value="https://edge-live.review.ethicalreviewmanager.com" />
+		</appSettings>
 			
-			```
+		```
 		* Faker API - This is used to create random data that is used for different things inside the framework (e.g. Creating new User name or Form name). The Faker data that is generated will be different each time the code is run, which allowed us to decrease the risk of duplicating the names of forms, projects etc. See example code:
 		 ** SCreenshot of Faker - (Copy User creation)
 		 ### Example
 		 ```csharp
 		 
-			int randint = Faker.RandomNumber.Next(100);
-            string firstname = Faker.Name.First();
-            string lastName = Faker.Name.Last();
-            string emailid = Faker.Internet.Email(firstname);
-            string password = "Infonetica@" + randint;
-            string organisation = Faker.Internet.DomainName();
-            string department = Faker.Internet.DomainWord();
-            string number = Faker.Phone.Number();
-            string address = Faker.Address.StreetAddress();
-            string town = Faker.Address.City();
-            string postcode = Faker.Address.UkPostCode();
+		int randint = Faker.RandomNumber.Next(100);
+		string firstname = Faker.Name.First(); 
+		string lastName = Faker.Name.Last(); 
+		string emailid = Faker.Internet.Email(firstname); 
+		string password = "Infonetica@" + randint;
+		string organisation = Faker.Internet.DomainName(); 
+		string department = Faker.Internet.DomainWord();
+		string number = Faker.Phone.Number();
+		string address = Faker.Address.StreetAddress();
+		string town = Faker.Address.City();
+		string postcode = Faker.Address.UkPostCode();
 			
 		 ```
 		* Scenario Context - Scenario Contexts has been used throughout the framework. It is used to store data values, so these values can be used later in the scenario. This helps us as we do not need to hardcode any values, we can just use the scenario context throughout.
